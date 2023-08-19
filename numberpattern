@@ -267,3 +267,82 @@ int main(){
 		printf("\n");
 	}
 }
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void p1(){
+    printf("*    ");
+}
+
+void p2(){
+    cout<<"*****";
+}
+
+void p3(){
+    cout<<"    *";
+}
+
+void p4(){
+    cout<<"*   *";
+}
+
+
+
+int main(){
+
+string n;
+
+cin>>n;
+
+for(int i=0; i<5; i++){
+    for(int j=0; j<n.length(); j++){
+        int k = n[j];
+
+        if(i==0){
+
+            if(k=='1') p3();
+            else if(k=='4') p4();
+            else{
+                p2();
+            }
+            
+        }
+
+        else if(i==1){
+            if(k=='1' or k=='2' or k=='3' or k=='7') p3();
+            else if(k=='4' or k=='8' or k=='9' or k=='0') p4();
+            else if(k=='5' or k=='6') p1();
+        }
+
+        else if(i==2){
+            if(k=='1') p3();
+            else if(k=='0') p4();
+            else{
+                p2();
+            }
+        }
+
+        else if(i==3){
+            if(k=='1' or k=='3' or k=='4' or k=='5' or k=='9') p3();
+            else if(k=='2' or k=='7') p1();
+            else{
+                p4();
+            }
+        }
+        else if(i==4){
+            if(k=='1' or k=='4') p3();
+            else if(k=='7') p1();
+            else{
+                p2();
+            }
+        }
+
+        cout<<" ";
+    }
+
+    cout<<endl;
+}
+
+return 0;
+}
