@@ -1,0 +1,70 @@
+#include<stdio.h>
+
+int main()
+{
+
+    int a[10][10];
+
+
+    int row, col;
+
+    scanf("%d%d", &row, &col);
+
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
+        {
+            scanf("%d", &a[i][j]);
+        }
+    }
+
+    int left = 0, right = col - 1;
+    int top = 0, bottom = row - 1;
+
+    int ans[row * col];
+
+    int k = 0;
+
+    while (top <= bottom && left <= right)
+    {
+
+        for (int i = left; i <= right; i++)
+        {
+            ans[k] = a[top][i];
+            k++;
+        }
+        top++;
+
+        for (int i = top; i <= bottom; i++)
+        {
+            ans[k] = a[i][right];
+            k++;
+        }
+        right--;
+        if (top <= bottom)
+        {
+            for (int i = right; i >= left; i--)
+            {
+                ans[k] = a[bottom][i];
+                k++;
+            }
+            bottom--;
+        }
+        if (left < = right)
+        {
+            for (int i = bottom; i >= top; i--)
+            {
+                ans[k] = a[i][left];
+                k++;
+            }
+            left++;
+        }
+    }
+
+    for (int i = 0; i < row * col; i++)
+    {
+        printf("%d ", ans[i]);
+    }
+    return 0;
+
+}
