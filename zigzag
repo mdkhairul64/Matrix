@@ -1,0 +1,61 @@
+#include<stdio.h>
+int main()
+{
+	int a[10][10];
+	int rows, cols;
+
+	scanf("%d%d", &rows, &cols);
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			scanf("%d", &a[i][j]);
+		}
+	}
+
+	int res[rows * cols];
+
+	int i = 0, j = 0;
+	bool dir = true; //true for upwards  and false for downwards
+
+	int k = 1; //for storing the index of the result
+
+	res[0] = a[i][j];
+
+	while (i  != rows - 1 || j != cols - 1)
+	{
+		if (dir) { //if upwards right motion
+			if (j == cols - 1) {
+				i++; dir = false;
+			}
+			else if (i == 0) {
+				j++; dir = false;
+			}
+			else {
+				i--; j++; //to go upwards right if direction change not needed yet
+			}
+		}
+		else { //if downwards left motion
+			if (i == rows - 1) {
+				j++; dir = true;
+			}
+			else if (j == 0) {
+				i++; dir = true;
+			}
+			else {
+				i++; j--; //to go downwards right if direction change not needed yet
+			}
+		}
+		res[k++] = a[i][j];
+	}
+
+	for (int i = 0; i < rows * cols; i++)
+	{
+		printf("%d ", res[i]);
+	}
+	printf("\n");
+
+	return 0;
+}
+
+/////*****
